@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".environment", ".environment", "{A215B161-BC68-4A36-84EB-14140FEA3954}"
+	ProjectSection(SolutionItems) = preProject
+		..\.secrets.cfg = ..\.secrets.cfg
+		..\.gitignore = ..\.gitignore
+		..\Directory.Packages.props = ..\Directory.Packages.props
+		..\Directory.Build.props = ..\Directory.Build.props
+		..\Directory.Build.targets = ..\Directory.Build.targets
+		..\settings.cfg = ..\settings.cfg
+		..\.env = ..\.env
+		..\global.json = ..\global.json
+		..\nuget.config = ..\nuget.config
+		..\paket.dependencies = ..\paket.dependencies
+		..\PublicAssembly.props = ..\PublicAssembly.props
+		..\paket.lock = ..\paket.lock
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".resources", ".resources", "{30BF3397-359F-42F4-89A5-9C1C505079B0}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGES.md = ..\CHANGES.md
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+		..\docker\docker-compose.yaml = ..\docker\docker-compose.yaml
+		..\docker\default.dockerfile = ..\docker\default.dockerfile
+		..\docker\envoy.yaml = ..\docker\envoy.yaml
+		..\docker\.env = ..\docker\.env
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_build", "..\.nuke\build\_build.csproj", "{F2CB695C-A4E7-4097-BD1A-DDB5BC1820B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K4os.Orleans.NATS", "K4os.Orleans.NATS\K4os.Orleans.NATS.csproj", "{900DA7AC-34F5-4B16-B3B4-F07A2EDE9E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Orleans.NATS.Tests", "K4os.Orleans.NATS.Tests\K4os.Orleans.NATS.Tests.csproj", "{AC246D1F-891D-41CA-8780-663415F79F2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Orleans.NATS.App", "K4os.Orleans.NATS.App\K4os.Orleans.NATS.App.csproj", "{2E33C4AC-0736-42BB-948D-D4EBBDBD6775}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{900DA7AC-34F5-4B16-B3B4-F07A2EDE9E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900DA7AC-34F5-4B16-B3B4-F07A2EDE9E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900DA7AC-34F5-4B16-B3B4-F07A2EDE9E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900DA7AC-34F5-4B16-B3B4-F07A2EDE9E08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC246D1F-891D-41CA-8780-663415F79F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC246D1F-891D-41CA-8780-663415F79F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC246D1F-891D-41CA-8780-663415F79F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC246D1F-891D-41CA-8780-663415F79F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E33C4AC-0736-42BB-948D-D4EBBDBD6775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E33C4AC-0736-42BB-948D-D4EBBDBD6775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E33C4AC-0736-42BB-948D-D4EBBDBD6775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E33C4AC-0736-42BB-948D-D4EBBDBD6775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2CB695C-A4E7-4097-BD1A-DDB5BC1820B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2CB695C-A4E7-4097-BD1A-DDB5BC1820B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5381717-3737-484E-83ED-EBEE716211C1}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal
