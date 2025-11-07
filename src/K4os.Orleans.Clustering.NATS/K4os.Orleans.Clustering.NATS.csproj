@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="K4os.Orleans.NATS.Tests"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Server" Version="9.2.1"/>
+    <PackageReference Include="NATS.Client.KeyValueStore" Version="2.6.10"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\K4os.Orleans.NATS\K4os.Orleans.NATS.csproj" />
+  </ItemGroup>
+
+</Project>

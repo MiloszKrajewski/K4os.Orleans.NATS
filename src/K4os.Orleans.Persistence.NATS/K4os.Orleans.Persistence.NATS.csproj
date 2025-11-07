@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>true</IsPackable>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Import Project="$(PublicAssemblyProps)"/>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Server" Version="9.2.1"/>
+    <PackageReference Include="NATS.Client.KeyValueStore" Version="2.6.11"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\K4os.Orleans.NATS\K4os.Orleans.NATS.csproj" />
+  </ItemGroup>
+
+</Project>

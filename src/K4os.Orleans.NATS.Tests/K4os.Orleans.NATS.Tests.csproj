@@ -5,7 +5,12 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\K4os.Orleans.NATS\K4os.Orleans.NATS.csproj" />
+    <ProjectReference Include="..\K4os.Orleans.Clustering.NATS\K4os.Orleans.Clustering.NATS.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="System.Linq.Async" Version="6.0.3" />
+    <PackageReference Include="Testcontainers.Nats" Version="4.7.0" />
   </ItemGroup>
   
   <Import Project="..\..\.paket\Paket.Restore.targets" />

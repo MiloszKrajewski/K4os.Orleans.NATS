@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <Product>K4os.Orleans.NATS</Product>
-    <Description>...</Description>
-    <PackageTags>... ... ...</PackageTags>
+    <Description>Set of adapters allowing to use NATS with Orleans</Description>
+    <PackageTags>orleans nats</PackageTags>
     <Authors>Milosz Krajewski</Authors>
     <Copyright>Milosz Krajewski</Copyright>
   </PropertyGroup>
@@ -23,10 +23,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" $(Configuration) == 'Release' ">
-    <!--
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors Condition=" '$(IsReleasing)' == 'true' ">true</TreatWarningsAsErrors>
-    -->
     <Optimize>true</Optimize>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

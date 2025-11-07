@@ -1,0 +1,9 @@
+@api = http://localhost:5159
+@name = lock1
+
+### Acquire lock
+
+POST {{api}}/lock/{{name}}
+Accept: application/json
+
+###
