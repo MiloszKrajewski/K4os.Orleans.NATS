@@ -46,11 +46,7 @@
     <Using Include="System.Threading.Tasks" />
   </ItemGroup>
   
-  <PropertyGroup Condition=" '$(PublicNuGet)' == 'true' ">
-    <IsPackable>true</IsPackable>
-  </PropertyGroup>
-
-  <Import Condition=" '$(PublicNuGet)' == 'true' " Project="$(PublicAssemblyProps)"/>
+  <Import Condition=" '$(IsPublic)' == 'true' " Project="$(PublicAssemblyProps)"/>
   
   <!--
   <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
