@@ -18,13 +18,10 @@ public partial class NatsGrainStorage: IGrainStorage, ILifecycleParticipant<ISil
     private static readonly NatsRawSerializer<ReadOnlyMemory<byte>> BytesSerializer = 
         NatsRawSerializer<ReadOnlyMemory<byte>>.Default;
     
-    /// <summary>Default NATS server URL.</summary>
-    private static readonly Uri DefaultNatsUrl = new("nats://localhost:4222");
-
     private readonly ILogger _logger;
     private readonly INatsKVContext _kvContext;
     private readonly IGrainStorageSerializer _serializer;
-    private readonly string _clusterId;
+    private readonly string _serviceId;
     private readonly string _bucketName;
     private readonly string _name;
 
@@ -50,7 +47,7 @@ public partial class NatsGrainStorage: IGrainStorage, ILifecycleParticipant<ISil
     {
         _name = name;
         _logger = logger;
-        _clusterId = clusterOptions.Value.ClusterId;
+        _serviceId = clusterOptions.Value.ServiceId;
         _kvContext = storageOptions.Connector?.Invoke() ?? kvContext ?? CreateKvContext(storageOptions.NatsUrl);
         _serializer = storageOptions.GrainStorageSerializer ?? serializer;
         _bucketName = storageOptions.BucketName.NullIfBlank() ?? DefaultBucketName;
@@ -63,7 +60,7 @@ public partial class NatsGrainStorage: IGrainStorage, ILifecycleParticipant<ISil
     /// <returns>A new <see cref="INatsKVContext"/> instance.</returns>
     private static INatsKVContext CreateKvContext(Uri? url)
     {
-        var options = new NatsOpts { Url = (url ?? DefaultNatsUrl).ToString() };
+        var options = new NatsOpts { Url = (url ?? NatsDefaults.Url).ToString() };
         var connection = new NatsConnection(options);
         var jsContext = new NatsJSContext(connection);
         var kvContext = new NatsKVContext(jsContext);
@@ -75,7 +72,7 @@ public partial class NatsGrainStorage: IGrainStorage, ILifecycleParticipant<ISil
     private INatsKVStore Store => _store ?? throw StoreNotInitialized();
 
     /// <summary>Gets the default bucket name for this storage provider and cluster.</summary>
-    private string DefaultBucketName => $"grains-{_clusterId.ToNatsId()}-{_name.ToNatsId()}";
+    private string DefaultBucketName => $"grains-{_serviceId.ToNatsId()}-{_name.ToNatsId()}";
 
     /// <summary>Generates a NATS-compatible key for the given grain type and ID.</summary>
     /// <param name="stateType">The grain state type name.</param>
@@ -85,7 +82,7 @@ public partial class NatsGrainStorage: IGrainStorage, ILifecycleParticipant<ISil
     {
         var grainIdType = IdSpan.UnsafeGetArray(grainId.Type.Value);
         var grainIdKey = IdSpan.UnsafeGetArray(grainId.Key);
-        return $"{Url64.EncodeString(stateType)}/{Url64.EncodeBytes(grainIdType)}/{Url64.EncodeBytes(grainIdKey)}";
+        return $"{stateType.ToNatsId()}/{Url64.EncodeBytes(grainIdType)}/{Url64.EncodeBytes(grainIdKey)}";
     }
 
     /// <summary>Registers this storage provider as a participant in the silo lifecycle.</summary>
@@ -256,7 +253,7 @@ public partial class NatsGrainStorage: IGrainStorage, ILifecycleParticipant<ISil
     private async Task CreateStore(string bucketName, TimeSpan? maxAge, CancellationToken token)
     {
         var options = new NatsKVConfig(bucketName) {
-            Description = $"Orleans Grain Storage for cluster '{_clusterId}'",
+            Description = $"Orleans Grain Storage for cluster '{_serviceId}'",
             Storage = NatsKVStorageType.File,
             History = 1, // Only keep latest version
             MaxAge = maxAge ?? TimeSpan.Zero,

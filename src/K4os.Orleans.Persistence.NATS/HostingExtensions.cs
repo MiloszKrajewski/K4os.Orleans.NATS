@@ -41,8 +41,8 @@ public static partial class HostingExtensions
     public static NatsGrainStorage CreateStorage(IServiceProvider services, string name)
     {
         var optionsMonitor = services.GetRequiredService<IOptionsMonitor<NatsStorageOptions>>();
-        var redisGrainStorage = ActivatorUtilities.CreateInstance<NatsGrainStorage>(services, name, optionsMonitor.Get(name));
-        return redisGrainStorage;
+        var natsGrainStorage = ActivatorUtilities.CreateInstance<NatsGrainStorage>(services, name, optionsMonitor.Get(name));
+        return natsGrainStorage;
     }
     
     /// <summary>Creates a new <see cref="NatsStorageOptionsValidator"/> for the specified provider name.</summary>

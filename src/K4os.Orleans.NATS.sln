@@ -48,6 +48,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Orleans.NATS", "K4os.O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaygroundSilo", "PlaygroundSilo\PlaygroundSilo.csproj", "{A2C7A1F7-0B7B-4B88-9B49-D8A681EF6A14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Orleans.Streaming.NATS.Silo", "K4os.Orleans.Streaming.NATS.Silo\K4os.Orleans.Streaming.NATS.Silo.csproj", "{1BFBC75C-62E1-45EF-9EB7-84B22BE5F8A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Orleans.Streaming.NATS.Client", "K4os.Orleans.Streaming.NATS.Client\K4os.Orleans.Streaming.NATS.Client.csproj", "{F5040E3B-3001-4A3C-BB75-819485D751B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +92,14 @@ Global
 		{A2C7A1F7-0B7B-4B88-9B49-D8A681EF6A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2C7A1F7-0B7B-4B88-9B49-D8A681EF6A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2C7A1F7-0B7B-4B88-9B49-D8A681EF6A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BFBC75C-62E1-45EF-9EB7-84B22BE5F8A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BFBC75C-62E1-45EF-9EB7-84B22BE5F8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BFBC75C-62E1-45EF-9EB7-84B22BE5F8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BFBC75C-62E1-45EF-9EB7-84B22BE5F8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5040E3B-3001-4A3C-BB75-819485D751B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5040E3B-3001-4A3C-BB75-819485D751B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5040E3B-3001-4A3C-BB75-819485D751B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5040E3B-3001-4A3C-BB75-819485D751B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

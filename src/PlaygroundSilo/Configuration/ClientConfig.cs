@@ -6,7 +6,7 @@ public class ClientConfig
 	{
 		public string? ClusterId { get; set; }
 		public string? ServiceId { get; set; }
-		public Uri? RedisEndpoint { get; set; }
+		public Uri? NatsEndpoint { get; set; }
 	}
 	
 	public ClusterConfig? Cluster { get; set; }

@@ -11,12 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Orleans.Server" Version="9.2.1"/>
-    <PackageReference Include="NATS.Client.KeyValueStore" Version="2.6.11"/>
+    <PackageReference Include="Microsoft.Orleans.Streaming" Version="9.2.1"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\K4os.Orleans.NATS\K4os.Orleans.NATS.csproj" />
+    <ProjectReference Include="..\K4os.Orleans.Streaming.NATS\K4os.Orleans.Streaming.NATS.csproj"/>
   </ItemGroup>
 
 </Project>

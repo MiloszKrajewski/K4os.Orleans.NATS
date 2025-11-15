@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Orleans.Configuration;
+using PlaygroundSilo;
 using PlaygroundSilo.Configuration;
 using PlaygroundSilo.Grains;
 using PlaygroundSilo.Hosting;
@@ -22,8 +23,10 @@ host.UseOrleans(
             .UseLocalhostClustering()
             .AddNatsGrainStorage("Default", nats => nats.Apply(config))
             // .UseRedisReminderService(redis => redis.Apply(config))
-            // .AddRedisStreams("Default", redis => redis.Apply(config))
+            .AddNatsStreams("Default", nats => nats.Apply(config))
+            .AddNatsGrainStorage("PubSubStore", nats => nats.Apply(config))
             // .AddReminders()
+            // .AddStartupTask<InitializeLockMonitor>()
             ;
     });
 

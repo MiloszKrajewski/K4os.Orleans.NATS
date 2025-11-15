@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\K4os.Orleans.Persistence.NATS\K4os.Orleans.Persistence.NATS.csproj" />
+    <ProjectReference Include="..\K4os.Orleans.Streaming.NATS.Silo\K4os.Orleans.Streaming.NATS.Silo.csproj" />
+    <ProjectReference Include="..\K4os.Orleans.Streaming.NATS\K4os.Orleans.Streaming.NATS.csproj" />
   </ItemGroup>
 
 </Project>

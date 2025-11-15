@@ -1,9 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PublicNuGet>true</PublicNuGet>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Streaming" Version="9.2.1"/>
+    <PackageReference Include="NATS.Client.JetStream" Version="2.6.11"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\K4os.Orleans.NATS\K4os.Orleans.NATS.csproj"/>
+  </ItemGroup>
 
 </Project>

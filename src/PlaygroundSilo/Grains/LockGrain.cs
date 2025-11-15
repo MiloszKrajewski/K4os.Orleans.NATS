@@ -1,8 +1,11 @@
+using Orleans.Streams;
+
 namespace PlaygroundSilo.Grains;
 
 public class LockGrain: Grain, ILock
 {
     private readonly IPersistentState<LockState> _state;
+    private readonly IAsyncStream<LockEvent> _stream;
 
     private Guid? Owner
     {
@@ -22,6 +25,7 @@ public class LockGrain: Grain, ILock
     public LockGrain([PersistentState("ILock.v1")] IPersistentState<LockState> state)
     {
         _state = state;
+        _stream = this.GetStreamProvider("Default").GetStream<LockEvent>(StreamId.Create("Events", 0));
     }
 
     public async Task<Guid?> TryAcquireAsync(TimeSpan timeout, Guid? guid = null)
@@ -34,6 +38,8 @@ public class LockGrain: Grain, ILock
         Owner = owner;
         Expiration = DateTime.UtcNow.Add(timeout);
         await WriteState();
+
+        await _stream.OnNextAsync(new LockEvent(true, this.GetPrimaryKeyString(), Owner));
 
         return Owner;
     }

@@ -46,6 +46,12 @@
     <Using Include="System.Threading.Tasks" />
   </ItemGroup>
   
+  <PropertyGroup Condition=" '$(PublicNuGet)' == 'true' ">
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <Import Condition=" '$(PublicNuGet)' == 'true' " Project="$(PublicAssemblyProps)"/>
+  
   <!--
   <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
   <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

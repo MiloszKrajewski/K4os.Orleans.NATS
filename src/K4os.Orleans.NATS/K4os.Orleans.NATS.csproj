@@ -1,17 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <PublicNuGet>true</PublicNuGet>
+  </PropertyGroup>
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <IsPackable>true</IsPackable>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <Import Project="$(PublicAssemblyProps)"/>
-
   <ItemGroup>
+    <InternalsVisibleTo Include="K4os.Orleans.NATS.Tests" />
     <InternalsVisibleTo Include="K4os.Orleans.Persistence.NATS" />
     <InternalsVisibleTo Include="K4os.Orleans.Clustering.NATS" />
+    <InternalsVisibleTo Include="K4os.Orleans.Streaming.NATS" />
   </ItemGroup>
   
 </Project>

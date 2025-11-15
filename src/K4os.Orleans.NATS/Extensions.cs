@@ -50,16 +50,49 @@ internal static class Extensions
     [MethodImpl(MethodImplOptions.NoInlining), DoesNotReturn]
     private static T ThrowNullArgumentException<T>(string? expressionText) =>
         throw new ArgumentNullException(expressionText);
-
-    public static async Task ForEach<T>(this IAsyncEnumerable<T> stream, Action<T> apply, CancellationToken token)
+    
+    public static async Task ForEach<T>(this IAsyncEnumerable<T> stream, Action<T> action, CancellationToken token)
     {
-        await foreach (var item in stream.WithCancellation(token)) apply(item);
+        await foreach (var item in stream.WithCancellation(token))
+        {
+            action(item);
+        }
     }
-
-    public static async Task<List<T>> ToListAsync<T>(this IAsyncEnumerable<T> stream, CancellationToken token)
+    
+    public static async Task ForEachAsync<T>(
+        this IEnumerable<T> stream, 
+        Func<T, CancellationToken, ValueTask> apply, 
+        CancellationToken token = default)
     {
-        var list = new List<T>();
-        await foreach (var item in stream.WithCancellation(token)) list.Add(item);
+        foreach (var item in stream)
+        {
+            token.ThrowIfCancellationRequested();
+            await apply(item, token);
+        }
+    }
+    
+    public static async Task<List<TResult>> ToListAsync<T, TResult>(
+        this IAsyncEnumerable<T> stream, 
+        Func<T, TResult> transform, 
+        CancellationToken token = default)
+    {
+        var list = new List<TResult>();
+        await foreach (var item in stream.WithCancellation(token)) list.Add(transform(item));
+        return list;
+    }
+    
+    public static Task<List<T>> ToListAsync<T>(
+        this IAsyncEnumerable<T> stream, 
+        CancellationToken token = default) => 
+        ToListAsync(stream, static x => x, token);
+    
+    public static List<TResult> ToList<T, TResult>(
+        this IEnumerable<T> stream, 
+        Func<T, TResult> transform, 
+        CancellationToken token = default)
+    {
+        var list = new List<TResult>(stream is ICollection<T> collection ? collection.Count : 0);
+        list.AddRange(stream.Select(transform));
         return list;
     }
 }
