@@ -10,8 +10,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="vPrev1\**" />
+    <Compile Remove="vPrev2\**" />
+    <Compile Remove="vPrev3\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Orleans.Server" Version="9.2.1"/>
-    <PackageReference Include="NATS.Client.KeyValueStore" Version="2.6.10"/>
+    <PackageReference Include="NATS.Client.KeyValueStore" Version="2.8.0"/>
   </ItemGroup>
 
   <ItemGroup>

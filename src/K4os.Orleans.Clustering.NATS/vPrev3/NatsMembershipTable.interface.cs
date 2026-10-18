@@ -1,6 +1,4 @@
-﻿using NATS.Client.Core;
-
-namespace K4os.Orleans.Clustering.NATS;
+﻿namespace K4os.Orleans.Clustering.NATS.vPrev3;
 
 public partial class NatsMembershipTable: IMembershipTable
 {

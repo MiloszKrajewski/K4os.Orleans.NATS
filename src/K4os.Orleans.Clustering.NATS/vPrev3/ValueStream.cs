@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using NATS.Client.KeyValueStore;
 
-namespace K4os.Orleans.Clustering.NATS;
+namespace K4os.Orleans.Clustering.NATS.vPrev3;
 
 public class ValueStream
 {
