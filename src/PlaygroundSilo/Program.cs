@@ -26,7 +26,7 @@ host.UseOrleans(
             .AddNatsStreams("Default", nats => nats.Apply(config))
             .AddNatsGrainStorage("PubSubStore", nats => nats.Apply(config))
             // .AddReminders()
-            // .AddStartupTask<InitializeLockMonitor>()
+            .AddStartupTask<InitializeLockMonitor>()
             ;
     });
 

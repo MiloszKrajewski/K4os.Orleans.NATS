@@ -33,10 +33,6 @@
     <NoWarn>$(NoWarn);NU5125;NU5048</NoWarn>
   </PropertyGroup>
   
-  <ItemGroup Condition=" '$(IsPackable)' == 'true' ">
-    <InternalsVisibleTo Include="$(AssemblyName).Tests" />
-  </ItemGroup>
-  
   <ItemGroup>
     <Using Include="System" />
     <Using Include="System.Linq" />
@@ -45,8 +41,6 @@
     <Using Include="System.Threading" />
     <Using Include="System.Threading.Tasks" />
   </ItemGroup>
-  
-  <Import Condition=" '$(IsPublic)' == 'true' " Project="$(PublicAssemblyProps)"/>
   
   <!--
   <GenerateAssemblyInfo>true</GenerateAssemblyInfo>

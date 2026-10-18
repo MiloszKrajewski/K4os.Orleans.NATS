@@ -8,6 +8,10 @@ public class InitializeLockMonitor: IStartupTask
     {
         _client = client;
     }
-    public Task Execute(CancellationToken cancellationToken) => 
+
+    public Task Execute(CancellationToken cancellationToken)
+    {
         _client.GetGrain<ILockMonitor>(0).Ping();
+        return Task.CompletedTask;
+    }
 }

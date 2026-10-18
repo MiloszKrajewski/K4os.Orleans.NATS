@@ -1,5 +1,11 @@
 <Project>
+
   <ItemGroup>
     <None Remove="*.?sproj.DotSettings"/>
   </ItemGroup>
+
+  <ItemGroup Condition=" '$(IsPackable)' == 'true' ">
+    <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+  </ItemGroup>
+
 </Project>

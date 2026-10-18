@@ -7,6 +7,8 @@
     <IsPublic>true</IsPublic>
   </PropertyGroup>
 
+  <Import Condition=" '$(IsPublic)' == 'true' " Project="$(PublicAssemblyProps)"/>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Orleans.Streaming" Version="9.2.1"/>
     <PackageReference Include="NATS.Client.JetStream" Version="2.6.11"/>

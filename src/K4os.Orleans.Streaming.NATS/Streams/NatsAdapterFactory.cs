@@ -30,11 +30,13 @@ public class NatsAdapterFactory: IQueueAdapterFactory
     private readonly IQueueAdapterCache _adapterCache;
     private readonly INatsJSContext _jsContext;
 
-    /// <summary>
-    /// Application level failure handler override.
-    /// </summary>
+    /// <summary>Application level failure handler override.</summary>
     protected Func<QueueId, Task<IStreamFailureHandler>>? StreamFailureHandlerFactory { private get; set; }
 
+    /// <summary>Creates <see cref="NatsAdapterFactory"/> instance.</summary>
+    /// <param name="services"><see cref="IServiceProvider"/></param>
+    /// <param name="name">Name of the adapter factory.</param>
+    /// <returns>New <see cref="NatsAdapterFactory"/> instance.</returns>
     public static NatsAdapterFactory Create(IServiceProvider services, string name)
     {
         var natsOptions = services.GetOptionsByName<NatsStreamingOptions>(name);
@@ -45,6 +47,15 @@ public class NatsAdapterFactory: IQueueAdapterFactory
             services, name, natsOptions, queueMapperOptions, cacheOptions, clusterOptions);
     }
 
+    /// <summary>Creates <see cref="NatsAdapterFactory"/> instance.</summary>
+    /// <param name="name">Name of the adapter factory.</param>
+    /// <param name="streamingOptions">NATS streaming options.</param>
+    /// <param name="queueMapperOptions">Queue mapper options.</param>
+    /// <param name="cacheOptions">Cache options.</param>
+    /// <param name="clusterOptions">Cluster options.</param>
+    /// <param name="serializer">Serializer used to serialize messages / message containers.</param>
+    /// <param name="loggerFactory">Logger factory.</param>
+    /// <param name="jsContext">Optional JetStream context.</param>
     public NatsAdapterFactory(
         string name,
         NatsStreamingOptions streamingOptions,
